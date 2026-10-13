@@ -1,0 +1,10 @@
+{
+  "name": "CashTokens Charts",
+  "short_name": "CashCharts",
+  "description": "Responsive historical charting for Bitcoin Cash CashTokens.",
+  "start_url": "./CashTokensCharts.html",
+  "display": "standalone",
+  "background_color": "#0b1220",
+  "theme_color": "#111827",
+  "icons": []
+}
