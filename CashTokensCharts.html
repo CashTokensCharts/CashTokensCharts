@@ -49,4 +49,23 @@ $('dataInfoButton').addEventListener('click',()=>{const pop=$('dataInfoPopover')
 $('filterOutliers').addEventListener('change',()=>{displayCandles();chart.timeScale().fitContent()});['showMA21','showMA55','showMA200','showVolume','showGaussian'].forEach(id=>$(id).addEventListener('change',displayCandles));
 $('loadBtn').addEventListener('click',load);$('applyRangeBtn').addEventListener('click',load);$('interval').addEventListener('change',()=>{if(selected)load()});init();if('serviceWorker'in navigator&&location.protocol.startsWith('http'))navigator.serviceWorker.register('./sw.js').catch(()=>{});
 })();
-</script></body></html>
+</script>
+<!-- Public page-view counter -->
+<div id="public-page-views" style="text-align:center;padding:12px;font-size:12px;opacity:0.75" aria-live="polite">Total page views: Loading…</div>
+<script>
+(async () => {
+  const counter = document.getElementById("public-page-views");
+  const worker = "https://patient-glade-97cashtokenscharts-counter96.francis105d1.workers.dev";
+  try {
+    const response = await fetch(worker + "/view", { method: "POST", cache: "no-store" });
+    if (!response.ok) throw new Error("Counter request failed");
+    const data = await response.json();
+    counter.textContent = "Total page views: " + Number(data.count).toLocaleString();
+  } catch (error) {
+    counter.textContent = "Page views temporarily unavailable";
+    console.warn("Page-view counter:", error);
+  }
+})();
+</script>
+<!-- End public page-view counter -->
+</body></html>
